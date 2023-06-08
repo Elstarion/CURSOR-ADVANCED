@@ -4,16 +4,21 @@ const scissors = 90.2345;
 
 const maxPrice = Math.max(rock, paper, scissors);
 const minPrice = Math.min(rock, paper, scissors);
+
 const priceTotal = rock + paper + scissors;
 const integerPriceTotal =  Math.floor(rock) + Math.floor(paper) + Math.floor(scissors);
-const roundedInteger =  Math.round((Math.floor(rock) + Math.floor(paper) + Math.floor(scissors)) / 100) * 100;
+
+const roundedInteger =  Math.round(integerPriceTotal / 100) * 100;
 const isOdd = Boolean(integerPriceTotal % 2);
+
 const change = 500 - priceTotal;
-const averagePrice = ((rock + paper + scissors) / 3).toFixed(2);
-const randomDiscount = Math.random();
-const priceWithDiscount = (priceTotal * randomDiscount).toFixed(2);
+const averagePrice = (priceTotal / 3).toFixed(2);
+
+const randomDiscount = Math.random().toFixed(2);
+const priceWithDiscount = ( priceTotal - priceTotal * randomDiscount ).toFixed(2);
+
 const costPrice = Math.round(priceTotal) / 2;
-const profit = (costPrice - (priceTotal - priceWithDiscount)).toFixed(2);
+const profit = ( costPrice - (priceTotal * randomDiscount) ).toFixed(2);
 
 document.writeln('Max price: ', maxPrice);
 document.writeln('<br>');
@@ -31,10 +36,20 @@ document.writeln('Residual money: ', change);
 document.writeln('<br>');
 document.writeln('Average price: ', averagePrice);
 document.writeln('<br>');
+document.writeln('Client gets discount of: ', Math.trunc(randomDiscount * 100) + '%');
+document.writeln('<br>');
 document.writeln('Price with discount: ', priceWithDiscount);
 document.writeln('<br>');
 document.writeln('Profit: ', profit);
 document.writeln('<br>');
 document.writeln('<br>');
-document.writeln(`Maximum price: ${maxPrice} Minimum price: ${minPrice} Total price: ${priceTotal} Total integer price: ${integerPriceTotal} Price rounded to closest hundred: ${roundedInteger}
-Is integer price odd?: ${isOdd} Residual money: ${change} Average price: ${averagePrice} Price with discount: ${priceWithDiscount} Profit: ${profit}`);
+document.writeln(`Maximum price: ${maxPrice}
+Minimum price: ${minPrice}
+Total price: ${priceTotal} 
+Total integer price: ${integerPriceTotal}
+Price rounded to closest hundred: ${roundedInteger}
+Is integer price odd?: ${isOdd}
+Residual money: ${change}
+Average price: ${averagePrice}
+Price with discount: ${priceWithDiscount}
+Profit: ${profit}`);
