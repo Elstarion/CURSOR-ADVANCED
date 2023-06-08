@@ -17,8 +17,8 @@ const averagePrice = (priceTotal / 3).toFixed(2);
 const randomDiscount = Math.random().toFixed(2);
 const priceWithDiscount = ( priceTotal - priceTotal * randomDiscount ).toFixed(2);
 
-const costPrice = Math.round(priceTotal) / 2;
-const profit = ( costPrice - (priceTotal * randomDiscount) ).toFixed(2);
+const costPrice = Math.trunc(priceTotal / 2);
+const profit = Math.trunc( costPrice - (priceTotal * randomDiscount) );
 
 document.writeln('Max price: ', maxPrice);
 document.writeln('<br>');
