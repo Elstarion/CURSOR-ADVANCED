@@ -60,14 +60,20 @@ function countLetter(string, letter) {
 // -----------------------------------------------------------------------------
 
 function convertCurrency(string) {
-    let currency = string.includes('UAH') || string.includes('uah') ? 'UAH' : '$';
-    let moneyAmount = Number(string.replace(currency, ''));
+    let currency = null;
+    if (string.includes('UAH') || string.includes('uah')) {
+        currency = 'UAH'
+    } else if (string.includes('$')) {
+        currency = '$'
+    }
+
+    let moneyAmount = Number.parseInt(string);
 
     if (currency === 'UAH') {
         return `${(moneyAmount / 36.95).toFixed(2)}$`;
-    }
-
-    return `${(moneyAmount * 36.95).toFixed(2)}UAH`;
+    } else if (currency === '$') {
+        return `${(moneyAmount * 36.95).toFixed(2)}UAH`;
+    } else return `Sorry. I accept only UAH and $`
 }
 
 // -----------------------------------------------------------------------------
@@ -145,7 +151,7 @@ let task7 = '125$';
 document.writeln(`Convert ${task7} to UAH: `, convertCurrency(task7));
 document.writeln('<br>');
 
-let task8 = '125UAH';
+let task8 = '125uah';
 document.writeln(`Convert ${task8} to $: `, convertCurrency(task8));
 document.writeln('<br>');
 
