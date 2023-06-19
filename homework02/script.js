@@ -1,33 +1,22 @@
-let firstNumber = prompt('Enter first number');
-let secondNumber = prompt('Enter second number');
+let firstNumber = Number(prompt('Enter first number'));
 
-let result = 0;
-
-while (!(Number.isInteger(+firstNumber) && Number.isInteger(+secondNumber)) || !firstNumber || !secondNumber) {
-    alert('One of the inputs were not correct. Let`s try that again.');
-    firstNumber = prompt('The first number is?');
-    secondNumber = prompt('and the second is going to be?');
+while (firstNumber <= 0 || !Number.isInteger(firstNumber)) {
+    firstNumber = Number(prompt('Enter integer greater than 0'));
 }
 
-firstNumber = Number(firstNumber);
-secondNumber = Number(secondNumber);
+let secondNumber = Number(prompt('Enter second number'));
 
-const includeEvenNumbers = confirm('Include even numbers?');
+while (secondNumber <= firstNumber || !Number.isInteger(secondNumber)) {
+    secondNumber = Number(prompt(`Enter integer greater than ${firstNumber}`));
+}
 
-if (firstNumber > secondNumber) {
-    for (let i = firstNumber; i >= secondNumber; i--) {
-        if (!includeEvenNumbers && i % 2 === 0) {
-            continue;
-        }
+let result = 0;
+const skipEvenNumbers = confirm('Skip even numbers?');
 
-        result += i;
-    }
-} else {
-    for (let i = firstNumber; i <= secondNumber; i++) {
-        if (!includeEvenNumbers && i % 2 === 0) {
-            continue;
-        }
-
+for (let i = firstNumber; i <= secondNumber; i++) {
+    if (skipEvenNumbers) {
+        result += i % 2 ? i : 0;
+    } else {
         result += i;
     }
 }
