@@ -1,0 +1,38 @@
+body {  
+    height: 100vh;
+    background:  no-repeat url('./background-v.jpg');
+    background-size: cover;
+}
+
+.keys {
+    display: flex;
+    min-height: 100%;
+    width: 70%;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.key {
+    width: 7rem;
+    border: 1px solid white;
+    border-radius: 2rem;
+    color: #ffc600;
+    text-align: center;
+    padding: 10px;
+    transition: all 0.5s;
+    font-size: 2rem;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+
+.playing {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+}
+
+.key:hover {
+    cursor: pointer;
+    border-color: aqua;
+}
